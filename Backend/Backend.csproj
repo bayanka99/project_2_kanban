@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+   <PropertyGroup>
+      <OutputType>Library</OutputType>
+      <TargetFramework>net5.0</TargetFramework>
+      <AssemblyName>IntroSE.Kanban.Backend</AssemblyName>
+      <RootNamespace>IntroSE.Kanban.Backend</RootNamespace>
+   </PropertyGroup>
+   <ItemGroup>
+     <Compile Remove="BusinessLayer\NewFolder\**" />
+     <EmbeddedResource Remove="BusinessLayer\NewFolder\**" />
+     <None Remove="BusinessLayer\NewFolder\**" />
+   </ItemGroup>
+   <ItemGroup>
+      <PackageReference Include="log4net" Version="2.0.12" />
+      <PackageReference Include="Moq" Version="4.16.1" />
+      <PackageReference Include="SQLite" Version="3.13.0" />
+      <PackageReference Include="System.Data.SQLite" Version="1.0.113.7" />
+   </ItemGroup>
+   <ItemGroup>
+     <None Update="database.db">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </None>
+     <None Update="log4net.config">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </None>
+   </ItemGroup>
+   <ItemGroup>
+     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="DataAccessLayer\DTOs\TaskDTO.cs">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </Compile>
+     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="DataAccessLayer\DTOs\DTO.cs">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </Compile>
+     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="DataAccessLayer\DTOs\UserDTO.cs">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </Compile>
+     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="DataAccessLayer\DTOs\BoardDTO.cs">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </Compile>
+   </ItemGroup>
+</Project>

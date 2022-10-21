@@ -1,0 +1,33 @@
+﻿<Window x:Class="Presentation.View.HomeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="HomeView" Height="450" Width="800">
+    <Grid Height="434" VerticalAlignment="Bottom">
+        <Label Content="{Binding Path=HelloMsg,Mode=OneTime}" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top"/>
+
+        <Button Content="Search" HorizontalAlignment="Left" Height="25" Width="100" Margin="545,90,0,0" VerticalAlignment="Top" Click="Search_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="155,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="385"/>
+        <Label Content="Boards" HorizontalAlignment="Center" Height="30" Margin="0,45,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <ListBox ItemsSource="{Binding Path=User.Boards}" SelectedItem="{Binding Path=SelectedBoard, Mode=TwoWay}" HorizontalAlignment="Center" Height="165" Margin="0,120,0,0" VerticalAlignment="Top" Width="490">
+            <ListBox.ItemTemplate>
+            <DataTemplate>
+                <Border BorderBrush="#FF003CFF" BorderThickness="1">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="{Binding Path=BoardName, Mode=TwoWay}"/>
+                            <Label Content="{Binding Path=BoardCreator, Mode=TwoWay}"/>
+                    </StackPanel>
+                </Border>
+            </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="Create Board" HorizontalAlignment="Left" Height="30" Width="100" Margin="218,335,0,0" VerticalAlignment="Top" Click="CreateBoard_Click" RenderTransformOrigin="0.53,0.707"/>
+        <Button Content="In Progress Tasks"  HorizontalAlignment="Center" Height="30" Width="100" Margin="0,335,0,0" VerticalAlignment="Top" Click="InProgressTasks_Click"/>
+        <Button Content="Join Board"  HorizontalAlignment="Left" Height="30" Width="100" Margin="473,335,0,0" VerticalAlignment="Top" Click="JoinBoard_Click"/>
+        <Button Content="Logout" HorizontalAlignment="Center" Height="30" Width="100" Margin="0,394,0,0" VerticalAlignment="Top" Click="Logout_Click"/>
+        <Button Content="Choose Board"  IsEnabled="{Binding Path=EnableForward,Mode=OneWay}" HorizontalAlignment="Left" Height="30" Width="100" Margin="218,290,0,0" VerticalAlignment="Top" Click="ChooseBoard_Click" RenderTransformOrigin="0.514,0.36"/>
+        <Button Content="Remove Board"  IsEnabled="{Binding Path=EnableDelete,Mode=OneWay}" HorizontalAlignment="Left" Height="30" Width="100" Margin="473,290,0,0" VerticalAlignment="Top" Click="RemoveBoard_Click" RenderTransformOrigin="0.514,0.36"/>
+    </Grid>
+</Window>
